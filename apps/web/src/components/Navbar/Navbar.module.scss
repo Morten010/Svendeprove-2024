@@ -1,0 +1,113 @@
+@import "../../styles/sharedStyling.scss";
+
+.top{
+    // design siger 70px men det ser ret voldsomt ud
+    height: 25px;
+    box-shadow: $smallBoxShadow;
+}
+.navbar{
+    box-shadow: $baseBoxShadow;
+    nav{
+        padding: 0 20px;
+        @include mobile{
+            padding: 10px 20px;
+        }
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        max-width: $maxWidth;
+        margin: 0 auto;
+        span{
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .icons{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            .login{
+                background-color: $primarySoftColor;
+                color: #666666;
+                padding: 0.4rem;
+                border-radius: 100%;
+                transition: background-color 0.2s;
+                &:hover{
+                    background-color: $primaryColor;
+                }
+            }
+        }
+        .burgerMenu{
+            display: none;
+            place-content: center;
+            button{
+                display: grid;
+                place-content: center;  
+                font-size: 1.3rem;
+            }
+            @include mobile{
+                display: block;
+            }
+            .menu{
+                position: absolute;
+                transform: translateY(100%);
+                bottom: 0;
+                right: 0;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                background-color: white;
+            }
+        }
+        .desktopUi{
+            height: 60px;
+            @include mobile{
+                display: none;
+            }
+            li{
+                position: relative;
+                a{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    height: 100%;
+                }
+                &::after{
+                    transition: width 0.3s;
+                    position: absolute;
+                    content: "";
+                    width: 0%;
+                    height: 3px;
+                    background-color: $primaryColor;
+                    top: 0;
+                    left: 0;
+                }
+                &.active{
+                    font-weight: 500;
+                }
+                &:hover, &.active{
+                    color: $primaryColor;
+                    &::after{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        ul{
+            display: flex;
+            gap: 15px;
+            height: fit-content;
+            .link{
+                text-transform: capitalize;
+                a{
+                    transition: color 0.2s;
+                    &:hover{
+                        color: $primaryColor
+                    }
+                }
+            }
+        }
+    }
+}

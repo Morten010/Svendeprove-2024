@@ -1,0 +1,47 @@
+@import "../../styles/sharedStyling.scss";
+
+.footer{
+    background-color: $darkGreen;
+    color: white;
+    footer{
+        padding: 20px;
+        margin: 0 auto;
+        max-width: $maxWidth;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        @include mobile{
+            flex-direction: column;
+            gap: 20px;
+            .right{
+                max-width: 100%;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .left{
+                margin: 0 auto;
+            }
+        }
+        .right{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 75%;
+            .gap{
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+            }
+        }
+        .left{
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            color: rgb(255, 255, 255, 0.6);
+            transition: color 0.2s;
+            &:hover{
+                color: white;
+            }
+        }
+    }
+}

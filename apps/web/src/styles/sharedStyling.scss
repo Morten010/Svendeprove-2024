@@ -1,0 +1,16 @@
+// media queries
+@mixin mobile {
+    @media (max-width: 600px) {
+      @content;
+    }
+}
+
+// colors
+$primaryColor: #48A84D;
+$primarySoftColor: #D8EADB;
+$darkGreen: #114D46;
+$maxWidth: 1200px;
+
+// box shadows
+$baseBoxShadow: 0px 3px 6px #0000000D;
+$smallBoxShadow: 0px 1px 0px #F2F2F2;
