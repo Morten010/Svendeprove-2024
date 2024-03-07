@@ -1,0 +1,9 @@
+{
+    "globalDotEnv": [".env"],
+    "pipeline": {
+      "dev": {
+        "dotEnv": [".env"],
+        "dependsOn": ["^build"]
+      }
+    }
+}
