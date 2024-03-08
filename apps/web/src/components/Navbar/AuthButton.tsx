@@ -14,7 +14,11 @@ const AuthButton: FC<AuthButtonProps> = ({}) => {
 
   if (state?.user) {
     return (
-      <button className={style.login} onClick={() => state.logout()}>
+      <button 
+      className={style.login} 
+      onClick={() => state.logout()}
+      aria-label="Log ud"
+      >
         <BiLogOutCircle />
       </button>
     );
