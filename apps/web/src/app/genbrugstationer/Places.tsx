@@ -1,5 +1,6 @@
 import { getMap } from '@/lib/getMap';
 import axios from 'axios';
+import Link from 'next/link';
 import { FC } from 'react'
 
 interface placesProps {
@@ -21,9 +22,12 @@ const Places: FC<placesProps> = async ({}) => {
     );
 
     return (
-        <div className="w-[80%] flex mx-auto flex-wrap gap-10">
+        <div className="mx-auto grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] w-[80vw] max-w-screen-lg gap-10 place-content-center my-10 sm:my-0 overflow-hidden">
             {data.map((place: PlaceProps) => (
-            <div className="bg-white rounded-2xl overflow-hidden max-w-[352.28px] w-full shadow-[0px_3px_6px_#00000029]">
+            <Link
+            href={`/genbrugstationer/${place.id}`}
+            className="bg-white rounded-2xl overflow-hidden max-w-[352.28px] w-full shadow-[0px_3px_6px_#00000029] h-full"
+            >
                 <iframe
                 src={getMap(place.id)}
                 style={{
@@ -38,7 +42,7 @@ const Places: FC<placesProps> = async ({}) => {
                 <h1 className="font-bold text-xl">{place.name}</h1>
                 <p>Beskrivelse</p>
                 </div>
-            </div>
+            </Link>
             ))}
         </div>
     )

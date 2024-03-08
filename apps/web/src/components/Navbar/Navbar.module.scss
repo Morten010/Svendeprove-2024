@@ -7,6 +7,7 @@
 }
 .navbar{
     box-shadow: $baseBoxShadow;
+    z-index: 300;
     nav{
         padding: 0 20px;
         @include mobile{
@@ -39,6 +40,7 @@
             }
         }
         .burgerMenu{
+            z-index: 200;
             display: none;
             place-content: center;
             button{
@@ -52,7 +54,7 @@
             .menu{
                 position: absolute;
                 transform: translateY(100%);
-                bottom: 0;
+                bottom: 1px;
                 right: 0;
                 padding: 20px;
                 display: flex;

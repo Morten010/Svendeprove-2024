@@ -84,6 +84,8 @@ const page: FC<pageProps> = ({}) => {
     fetchdata();
   }, []);
 
+  console.log(data);
+  
   return (
     <div className="relative max-w-screen-lg mx-auto">
       <h1 className="text-center text-[#0E4F2D] font-bold text-3xl pt-20">
@@ -100,7 +102,9 @@ const page: FC<pageProps> = ({}) => {
           }
         }}
       >
-        <label>
+        <label
+        className="mx-2"
+        >
           <span className="sr-only">Søg på affald</span>
           <div
             className={cn(
@@ -120,7 +124,7 @@ const page: FC<pageProps> = ({}) => {
               value={search}
               onChange={(e) => setSearch(e.currentTarget.value)}
               placeholder="Søg på affald"
-              className="p-3 px-4 rounded-full w-[500px] shadow-[0px_5px_10px_#0000004A] disabled:bg-white"
+              className="p-3 px-4 rounded-full w-[300px] sm:w-[500px] shadow-[0px_5px_10px_#0000004A] disabled:bg-white"
             />
             <div className="absolute right-4 top-[50%] -translate-y-2/4 text-xl ">
               {!isFetching ? (
@@ -170,7 +174,7 @@ const page: FC<pageProps> = ({}) => {
           <CategoryGrid className="mt-2 px-0">
             {data.categories.map((item) => (
               <CategoryCard
-                urlRoute="kategori"
+                urlRoute={getCategoryUrl(item, sektions)}
                 category={item}
                 color={getColor(item, sektions)}
               />
@@ -226,6 +230,21 @@ function getColor(category: CategoryProps, sektions: SektionProp[]) {
   return color;
 }
 
+function getCategoryUrl(category: CategoryProps, sektions:SektionProp[]){
+  for (const sektion of sektions) {
+    console.log(sektion);
+    
+    for (const cat of sektion.categories) {
+     if(category.title === cat.title){
+        console.log("success");
+        
+        return `/sortering/sektion/${sektion.id}?category=${category.title}`
+     } 
+    }
+  }
+  return "/sortering"
+}
+
 function getTypesUrl(type: TypesProps, sektions: SektionProp[]) {
   for (const sektion of sektions) {
     for (const category of sektion.categories) {
@@ -238,7 +257,7 @@ function getTypesUrl(type: TypesProps, sektions: SektionProp[]) {
       }
     }
   }
-  return "sektion";
+  return "/sortering/sektion";
 }
 
 export default page;
