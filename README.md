@@ -3,7 +3,7 @@
 ## Setup
 
 Tilføj .env i root folderen
-
+server port skal være 4000
 ```
 # Port Number for server
 SERVERPORT = 4000
