@@ -99,7 +99,10 @@ export default function Home() {
               make a type specimen book. It has survived not only
             </p>
             <div className="flex gap-5">
-              <Link href="/bestil" className={cn(buttonVariants({ size: "lg" }))}>
+              <Link
+                href="/bestil"
+                className={cn(buttonVariants({ size: "lg" }))}
+              >
                 Bestil nu
               </Link>
             </div>

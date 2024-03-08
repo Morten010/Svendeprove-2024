@@ -13,15 +13,15 @@ export type UserChoicesProps = {
   type: typeProps[];
 };
 type typeProps = {
-  id: number
-  name: string
-  icon_filename: string
-  checked: boolean
-}
+  id: number;
+  name: string;
+  icon_filename: string;
+  checked: boolean;
+};
 
 const page: FC<pageProps> = ({}) => {
-  const [isLoading, setIsLoading] = useState(true)
-  const [isError, setIsError] = useState(false)
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   const [userChoices, setUserChoices] = useState<UserChoicesProps>({
     step: 1,
     type: [],
@@ -29,51 +29,39 @@ const page: FC<pageProps> = ({}) => {
 
   useEffect(() => {
     const fetchContainers = async () => {
-      try{
-        const { data } = await axios.get("http://localhost:4000/containers")
-      
+      try {
+        const { data } = await axios.get("http://localhost:4000/containers");
+
         setUserChoices({
           ...userChoices,
-          type: data.map((type: typeProps) => ({...type, checked: false}))
-        })
-      }catch(_err){
-        setIsError(true)
+          type: data.map((type: typeProps) => ({ ...type, checked: false })),
+        });
+      } catch (_err) {
+        setIsError(true);
       }
-      setIsLoading(false)
-    }
+      setIsLoading(false);
+    };
 
-    fetchContainers()
-  }, [])
+    fetchContainers();
+  }, []);
 
-  if(isLoading){
+  if (isLoading) {
     return (
-      <div
-      className="h-[calc(100vh-100px)] w-full grid place-content-center"
-      >
-        <Spinner 
-        className="h-10 w-10 text-primary"
-        />
+      <div className="h-[calc(100vh-100px)] w-full grid place-content-center">
+        <Spinner className="h-10 w-10 text-primary" />
       </div>
-    )
+    );
   }
-  
-  if(isError){
+
+  if (isError) {
     return (
-      <div
-      className="h-[calc(100vh-100px)] w-full grid place-content-center text-center"
-      >
-        <h1
-        className="text-3xl text-primary font-bold"
-        >
-          ohh ohhh
-        </h1>
-        <p
-        className="text-black/60"
-        >
+      <div className="h-[calc(100vh-100px)] w-full grid place-content-center text-center">
+        <h1 className="text-3xl text-primary font-bold">ohh ohhh</h1>
+        <p className="text-black/60">
           Kunne ikke få fat i databasen lige nu prøv igen senere
         </p>
       </div>
-    )
+    );
   }
 
   return (
@@ -90,10 +78,12 @@ const page: FC<pageProps> = ({}) => {
               userChoices={userChoices}
             />
           )}
-          {userChoices.step === 2 && <StepTwo 
-            setUserChoices={setUserChoices}
-            userChoices={userChoices}
-          />}
+          {userChoices.step === 2 && (
+            <StepTwo
+              setUserChoices={setUserChoices}
+              userChoices={userChoices}
+            />
+          )}
         </div>
       </div>
     </main>

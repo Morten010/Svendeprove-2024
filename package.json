@@ -2,14 +2,18 @@
   "name": "Svenderprove",
   "private": true,
   "scripts": {
-    "build": "turbo build",
+    "build": "turbo build --no-daemon",
     "dev": "dotenv -- turbo dev --no-daemon",
     "lint": "turbo lint",
+    "start": "turbo start",
+    "deploy": "turbo deploy",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
     "prettier": "^3.2.5",
     "turbo": "latest"
   },

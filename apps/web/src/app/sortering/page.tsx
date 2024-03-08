@@ -74,8 +74,7 @@ const page: FC<pageProps> = ({}) => {
         const { data: sektion } = await axios.get(
           "http://localhost:4000/section?incl_categories=true&incl_types=true",
         );
-        
-          
+
         setSektions(sektion);
       } catch (err) {
         setFetchError(true);
@@ -227,19 +226,19 @@ function getColor(category: CategoryProps, sektions: SektionProp[]) {
   return color;
 }
 
-function getTypesUrl(type: TypesProps, sektions: SektionProp[]){
-  for(const sektion of sektions){
-    for(const category of sektion.categories){
-      if(category.types){
-        for(const t of category.types){
-          if(type.id == t.id){
-            return `/sortering/sektion/${sektion.id}?category=${category.title}&type=${type.id}`
+function getTypesUrl(type: TypesProps, sektions: SektionProp[]) {
+  for (const sektion of sektions) {
+    for (const category of sektion.categories) {
+      if (category.types) {
+        for (const t of category.types) {
+          if (type.id == t.id) {
+            return `/sortering/sektion/${sektion.id}?category=${category.title}&type=${type.id}`;
           }
         }
       }
     }
   }
-  return "sektion"
+  return "sektion";
 }
 
 export default page;

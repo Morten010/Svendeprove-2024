@@ -14,7 +14,6 @@ interface SlidwehowProps {}
 const Slideshow: FC<SlidwehowProps> = ({}) => {
   let sliderRef = useRef<Slider | null>(null);
   const next = () => {
-
     sliderRef.current?.slickNext();
   };
   const previous = () => {

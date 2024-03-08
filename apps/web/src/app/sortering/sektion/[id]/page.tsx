@@ -6,16 +6,14 @@ import { IoIosArrowDropdownCircle } from "react-icons/io";
 import SektionDropDown from "./SektionDropDown";
 
 interface pageProps {
-  params: { id: string }
-  searchParams: { 
-    category: string 
-    type: string 
-  }
+  params: { id: string };
+  searchParams: {
+    category: string;
+    type: string;
+  };
 }
 
 const page: FC<pageProps> = async ({ params: { id }, searchParams }) => {
-  
-  
   const { data: sektion } = await axios.get(
     `http://localhost:4000/section/${id}`,
   );
@@ -40,12 +38,12 @@ const page: FC<pageProps> = async ({ params: { id }, searchParams }) => {
         {/* content */}
         <div className="p-10 flex flex-col gap-5 bg-white">
           {sektion.categories.map((category: CategoryProps) => (
-            <SektionDropDown 
-            title={sektion.title} 
-            category={category} 
-            sektionId={searchParams.category}
-            typeId={searchParams.type}
-            key={category.title + "dropdown"}
+            <SektionDropDown
+              title={sektion.title}
+              category={category}
+              sektionId={searchParams.category}
+              typeId={searchParams.type}
+              key={category.title + "dropdown"}
             />
           ))}
         </div>

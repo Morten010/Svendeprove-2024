@@ -67,7 +67,7 @@ const StepOne: FC<StepOneProps> = ({ setUserChoices, userChoices }) => {
                   )}
                 </div>
                 <Image
-                  src={`/images/icons/${t.icon_filename}`}
+                  src={`/Images/Icons/${t.icon_filename}`}
                   width={80}
                   height={80}
                   alt={t.name}

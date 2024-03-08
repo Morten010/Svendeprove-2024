@@ -22,18 +22,18 @@ interface SektionDropDownProps {
   category: CategoryProps;
   title: string;
   sektionId?: string;
-  typeId?: string
+  typeId?: string;
 }
 
 const SektionDropDown: FC<SektionDropDownProps> = ({
   category: category,
   title,
   sektionId,
-  typeId
+  typeId,
 }) => {
-  const categoryContainer = useRef<HTMLDivElement>(null)
+  const categoryContainer = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(sektionId === category.title ? true : false);
-  
+
   const { data: types } = useQuery({
     queryFn: async () => {
       const { data } = await axios.get(
@@ -46,13 +46,12 @@ const SektionDropDown: FC<SektionDropDownProps> = ({
   });
 
   useEffect(() => {
-    if(categoryContainer.current){
-      if(category.title === sektionId){
-        categoryContainer.current.scrollIntoView() 
+    if (categoryContainer.current) {
+      if (category.title === sektionId) {
+        categoryContainer.current.scrollIntoView();
       }
     }
-  }, [categoryContainer])
-  
+  }, [categoryContainer]);
 
   return (
     <div
@@ -90,9 +89,12 @@ const SektionDropDown: FC<SektionDropDownProps> = ({
             {types
               .filter((type) => type.rules.is_allowed)
               .map((type) => (
-                <div className={cn("flex gap-5 justify-between", {
-                  "outline outline-red-700 outline-offset-2 rounded": parseInt(typeId ? typeId : "0") === type.id
-                })}>
+                <div
+                  className={cn("flex gap-5 justify-between", {
+                    "outline outline-red-700 outline-offset-2 rounded":
+                      parseInt(typeId ? typeId : "0") === type.id,
+                  })}
+                >
                   <div>
                     <h4 className="text-lg font-semibold text-[#696974]">
                       {type.title}
@@ -114,9 +116,12 @@ const SektionDropDown: FC<SektionDropDownProps> = ({
             {types
               .filter((type) => !type.rules.is_allowed)
               .map((type) => (
-                <div className={cn("flex justify-between gap-5", {
-                  "outline outline-red-700 outline-offset-2 rounded": parseInt(typeId ? typeId : "0") === type.id
-                })}>
+                <div
+                  className={cn("flex justify-between gap-5", {
+                    "outline outline-red-700 outline-offset-2 rounded":
+                      parseInt(typeId ? typeId : "0") === type.id,
+                  })}
+                >
                   <div>
                     <h4 className="text-lg font-semibold text-[#696974]">
                       {type.title}

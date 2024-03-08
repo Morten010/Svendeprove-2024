@@ -3,14 +3,24 @@
   "globalDependencies": ["**/.env.*local"],
   "globalDotEnv": [".env"],
   "pipeline": {
+    "deploy": {
+      "dependsOn": ["^deploy"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+    },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"],
+      "cache": true
     },
     "lint": {
-      "dependsOn": ["^lint"]
+      "dependsOn": ["^lint"],
+      "cache": true
     },
     "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "start": {
       "cache": false,
       "persistent": true
     }

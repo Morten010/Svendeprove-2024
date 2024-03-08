@@ -16,10 +16,16 @@ export default function StepSvg({ isStepTwo }: { isStepTwo: boolean }) {
           className="absolute top-0 left-0 z-50"
         >
           <g>
-            <circle cx="27.5" cy="27.5" r="26" stroke="#97e09b" stroke-width="3" stroke-linejoin="round"
-            className={cn("transition-transfor duration-700", {
-              "scale-50 translate-x-3 translate-y-3": !isStepTwo
-            })}
+            <circle
+              cx="27.5"
+              cy="27.5"
+              r="26"
+              stroke="#97e09b"
+              stroke-width="3"
+              stroke-linejoin="round"
+              className={cn("transition-transfor duration-700", {
+                "scale-50 translate-x-3 translate-y-3": !isStepTwo,
+              })}
             />
             <circle cx="27.5" cy="27.5" r="20" fill="#97e09b" />
             <circle cx="27.5" cy="163.5" r="20" fill="#97e09b" />
@@ -58,21 +64,24 @@ export default function StepSvg({ isStepTwo }: { isStepTwo: boolean }) {
         </g>
       </svg>
       <svg
-       width="55"
-       height="55"
-       viewBox="0 0 55 55"
-        className={cn("absolute -bottom-[7.5px] scale-50 z-0 transition-transform delay-500", {
-          "scale-100": !isStepTwo
-        })}
+        width="55"
+        height="55"
+        viewBox="0 0 55 55"
+        className={cn(
+          "absolute -bottom-[7.5px] scale-50 z-0 transition-transform delay-500",
+          {
+            "scale-100": !isStepTwo,
+          },
+        )}
         fill="none"
       >
-        <circle 
-        cx="27.5" 
-        cy="27.5" 
-        r="26" 
-        stroke="#97e09b" 
-        stroke-width="3" 
-        stroke-linejoin="round"
+        <circle
+          cx="27.5"
+          cy="27.5"
+          r="26"
+          stroke="#97e09b"
+          stroke-width="3"
+          stroke-linejoin="round"
         />
       </svg>
     </div>

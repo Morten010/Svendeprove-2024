@@ -14,7 +14,7 @@ export type CategoryProps = {
   icon_filename: string;
   icon_filepath: string;
   type: "category";
-  types?: TypesProps[]
+  types?: TypesProps[];
 };
 
 export type TypesProps = {
