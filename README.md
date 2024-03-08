@@ -34,14 +34,14 @@ Instalere npm pakker fra root(ikke inde i server eller web)
 npm i
 ```
 
-installer turbo
-
-```shell
-npm install turbo --global
-```
-
-kør projektet også fra root
+kør projektet i dev også fra root
 
 ```shell
 npm run dev
+```
+
+Kør projekt i production 
+
+```shell
+npm run deploy
 ```
